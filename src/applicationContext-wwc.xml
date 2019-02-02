@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	">
+
+
+	
+	<bean id="rightDao" class="com.hr.dao.SysRightDao">
+		<property name="temp" ref="temp"></property>
+	</bean>
+	
+	
+	
+	<!-- service -->
+	<bean id="us" class="com.hr.service.impl.UserService">
+		<property name="cd" ref="cd"></property>
+	</bean>
+	<bean id="bd" class="com.hr.service.impl.BasDictService">
+		<property name="cd" ref="cd"></property>
+	</bean>
+	<bean id="rs" class="com.hr.service.impl.SysRoleService">
+		<property name="cd" ref="cd"></property>
+	</bean>
+	<bean id="rg" class="com.hr.service.impl.RightService">
+		<property name="cd" ref="cd"></property>
+		<property name="rd" ref="rightDao"></property>
+	</bean>
+	<bean id="st" class="com.hr.service.impl.StorageService">
+		<property name="cd" ref="cd"></property>
+	</bean>
+	<bean id="pd" class="com.hr.service.impl.ProductService">
+		<property name="cd" ref="cd"></property>
+	</bean>
+	
+	
+	<!-- action -->
+	<bean id="ua" class="com.hr.action.UserAction" scope="prototype">
+		<property name="us" ref="us"></property>
+		<property name="rs" ref="rs"></property>
+	</bean>
+	<bean id="bs" class="com.hr.action.BasDictAction" scope="prototype">
+		<property name="bd" ref="bd"></property>
+	</bean>
+	<bean id="ra" class="com.hr.action.SysRoleAction" scope="prototype">
+		<property name="rs" ref="rs"></property>
+		<property name="rg" ref="rg"></property>
+	</bean>
+	<bean id="sto" class="com.hr.action.StorageAction" scope="prototype">
+		<property name="st" ref="st"></property>
+		<property name="pt" ref="pd"></property>
+	</bean>
+	<bean id="pr" class="com.hr.action.ProductAction" scope="prototype">
+		<property name="pd" ref="pd"></property>
+	</bean>
+	<bean id="right" class="com.hr.action.SysRightAction" scope="prototype">
+		<property name="rg" ref="rg"></property>
+	</bean>
+</beans>

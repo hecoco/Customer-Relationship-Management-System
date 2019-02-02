@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+    http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	">
+	<!-- 只写service -->
+	<bean id="us" class="com.hr.service.impl.UserService">
+		<property name="cd" ref="cd"></property>
+	</bean>
+	
+	<!-- 客户信息表 -->
+	<bean id="ccs" class="com.hr.service.impl.CustomerServiceImpl">
+	<property name="cd" ref="cd"></property>
+	</bean>
+	
+	<!-- 联系人表 -->
+	<bean id="ils" class="com.hr.service.impl.LinkmanServiceImpl">
+	<property name="cd" ref="cd"></property>
+	</bean>
+	
+	<!-- 交易记录表 -->
+	<bean id="ia" class="com.hr.service.impl.ActivityImpl">
+	<property name="cd" ref="cd"></property>
+	</bean>
+	
+	<!-- 订单表 -->
+	<bean id="ifo" class="com.hr.service.impl.OrdersImpl">
+	<property name="cd" ref="cd"></property>
+	</bean>
+	
+	<!-- 流失表 -->
+	<bean id="cs" class="com.hr.service.impl.CstlostServiceImpl">
+	<property name="cd" ref="cd"></property>
+	</bean>
+	
+
+
+
+</beans>

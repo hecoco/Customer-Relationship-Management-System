@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	">
+
+	
+	
+	<!-- dao -->
+	<bean id="cd" class="com.hr.dao.CommonsDao">
+		<property name="temp" ref="temp"></property>
+	</bean>
+	
+	
+	<!-- service -->
+	<bean id="csp" class="com.hr.service.impl.ChanceService">
+		<property name="cd" ref="cd"></property>
+	</bean>
+	<bean id="ps" class="com.hr.service.impl.planService">
+		<property name="cd" ref="cd"></property>
+	</bean>
+	
+	<!-- action -->
+	<bean id="ca" class="com.hr.action.ChanceAction" scope="prototype">
+		<property name="ic" ref="csp"></property>
+		<property name="us" ref="us"></property>
+	</bean>
+	<bean id="pa" class="com.hr.action.Planaction" scope="prototype">
+	    <property name="ips" ref="ps"></property>
+	    <property name="ic" ref="csp"></property>
+	</bean>
+<!-- 实例化TongJiDao -->
+<bean class="com.hr.dao.TongJiDaoImpl" id="tongji">
+	<property ref="temp" name="temp"> </property>
+</bean>
+<!-- 实例化TongJiService -->
+<bean class="com.hr.service.impl.TongJiServiceImpl" id="tongjiService">
+	<property ref="tongji" name="infTongJiDao"> </property>
+</bean>
+<!-- 实例化tongjiaction -->
+<bean class="com.hr.action.TongJiAction" id="tongjiAction" scope="prototype">
+	<property ref="tongjiService" name="infTongJiService"> </property>
+</bean>
+
+</beans>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="p1" namespace="/" extends="struts-default">
+
+		
+		
+		<!-- 客户表 -->
+		<action name="cstc" class="cca">
+		
+		<result>html/~cust/cust/list.jsp</result>
+		
+		<result name="bid">html/~cust/cust/edit.jsp</result>
+		
+		<result name="up" type="redirectAction">
+		<param name="namepace">/</param>
+		<param name="actionName">cstc</param>
+		<param name="method">findAll</param>
+		</result>
+		
+	    <result name="del" type="redirectAction">
+		<param name="namepace">/</param>
+		<param name="actionName">cstc</param>
+		<param name="method">findAll</param>
+		</result>
+		
+		</action>
+		
+		<!-- 联系人表 -->
+		<action name="link" class="lka">
+		
+		<result name="customerById">html/~cust/cust/linkman.jsp</result>
+		
+		<result name="add" type="redirectAction">
+		<param name="namepace">/</param>
+		<param name="actionName">link</param>
+		<param name="method">findcustomerById</param>
+		</result>
+		
+		<result name="del" type="redirectAction">
+		<param name="namepace">/</param>
+		<param name="actionName">link</param>
+		<param name="method">findcustomerById</param>
+		</result>
+		
+		<result name="bid">html/~cust/cust/linkman_edit.jsp</result>
+		
+		<result name="update" type="redirectAction">
+		<param name="namepace">/</param>
+		<param name="actionName">link</param>
+		<param name="method">findcustomerById</param>
+		</result>
+		
+		</action>
+		
+		<!-- 交易记录表 -->
+		<action name="csta" class="aa">
+		<result>html/~cust/cust/activities.jsp</result>
+		
+		<result name="add" type="redirectAction">
+		<param name="namepace">/</param>
+		<param name="actionName">csta</param>
+		<param name="method">findActivityById</param>
+		</result>
+		
+		<result name="bid">html/~cust/cust/activities_edit.jsp</result>
+		
+		<result name="update" type="redirectAction">
+		<param name="namepace">/</param>
+		<param name="actionName">csta</param>
+		<param name="method">findActivityById</param>
+		</result>
+		
+		<result name="del" type="redirectAction">
+		<param name="namepace">/</param>
+		<param name="actionName">csta</param>
+		<param name="method">findActivityById</param>
+		</result>
+		</action>
+		
+		<!-- 订单表 -->
+		<action name="orde" class="oa">
+		<result>html/~cust/cust/orders.jsp</result>
+		<result name="bid">html/~cust/cust/orders_detail.jsp</result>
+		</action>
+		<!-- 流失表 -->
+		<action name="lost" class="cas">
+		<result>html/~cust/lost/list.jsp</result>
+		<result name="bid">html/~cust/lost/confirm.jsp</result>
+		<result name="update" type="redirectAction">
+		<param name="namespace">/</param>
+		<param name="actionName">lost</param>
+		<param name="method">findAll</param>
+		</result>
+		<result name="bidd">html/~cust/lost/relay.jsp</result>
+		
+		<result name="updatee" type="redirectAction">
+		<param name="namespace">/</param>
+		<param name="actionName">lost</param>
+		<param name="method">findAll</param>
+		</result>
+		</action>
+		
+		
+		
+		<action name="chance" class="ca">
+		  <result name="list">/html/~sale/list.jsp</result>
+		  <result name="idlist">/html/~sale/edit.jsp</result>
+		  <result name="dispatch">/html/~sale/dispatch.jsp</result>
+		</action>
+		<action name="plan" class="pa">
+			<result name="list">/html/~sale/dev.jsp </result>
+			<result name="dev_execute">/html/~sale/dev_execute.jsp</result>
+			<result name="dev_plan">/html/~sale/dev_plan.jsp</result>
+		    <result name="query" type="redirectAction">
+		    	<param name="namspace">/</param>
+		    	<param name="actionName">plan</param>
+		    	<param name="method">querylist</param>
+		    </result>
+		</action>
+		<action name="TongJi" class="tongjiAction">
+
+			<result>html/~rept/contr.jsp</result>
+			
+			<result name="FenXi">html/~rept/cons.jsp</result>
+			
+			<result name="FenWu">html/~rept/ser.jsp</result>
+			
+			<result name="LiuShi">html/~rept/lost.jsp</result>
+			
+		</action>
+		
+		
+		
+		
+		
+		<action name="user" class="ua">
+			<result name="sele">/html/~right/user/list.jsp</result>
+			<result name="yes" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">user</param>
+				<param name="method">findAll</param>
+			</result>
+			<result name="ck">/html/~right/user/detail.jsp</result>
+			<result name="id">/html/~right/user/edit.jsp</result>
+			<result name="zp">/html/~right/user/dispatch.jsp</result>
+		</action>
+		<action name="basd" class="bs">
+			<result name="li">html/~basd/dict.jsp</result>
+			<result name="ad" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">basd</param>
+				<param name="method">select</param>
+			</result>
+			<result name="sid">html/~basd/dict_edit.jsp</result>
+		</action>
+		<action name="role" class="ra">
+			<result name="sele">/html/~right/role/list.jsp</result>
+			<result name="sid">/html/~right/role/roleRight.jsp</result>
+			<result type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">role</param>
+				<param name="method">findAll</param>
+			</result>
+			<result name="detail">/html/~right/role/detail.jsp</result>
+			<result name="edit">/html/~right/role/edit.jsp</result>
+		</action>
+		<action name="storage" class="sto">
+			<result name="sele">html/~basd/storage.jsp</result>
+		</action>
+		<action name="product" class="pr">
+			<result name="sele">html/~basd/product.jsp</result>
+		</action>
+		<action name="sysright" class="right">
+			<result  name="sele">/html/~right/right/list.jsp</result>
+			<result  name="sead">/html/~right/right/add.jsp</result>
+			<result type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">sysright</param>
+				<param name="method">findAll</param>
+			</result>
+			<result name="ck">/html/~right/right/detail.jsp</result>
+			<result name="findid">/html/~right/right/edit.jsp</result>
+		</action>
+		
+		
+		
+		<action name="service" class="sa">
+		     <result name="list">/html/~cust/service/dispatch.jsp</result>
+		     <result name="list1">/html/~cust/service/deal.jsp</result>
+		     <result name="list3">/html/~cust/service/feedback.jsp</result>
+		     <result name="list4">/html/~cust/service/feedback_detail.jsp</result>
+		     <result name="list2">/html/~cust/service/deal_detail.jsp</result>
+		     <result name="list5">/html/~cust/service/arch.jsp</result>
+		     <result name="list6">/html/~cust/service/detail.jsp</result>
+		     <result name="add" type="redirectAction">
+					<param name="namespace">/</param>
+					<param name="actionName">service</param>
+					<param name="method">findall</param>
+			 </result>
+		</action>
+		
+		
+	</package>
+</struts>    

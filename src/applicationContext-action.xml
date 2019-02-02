@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+    http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	">
+
+	<!-- 只写action -->
+	<bean id="ua" class="com.hr.action.UserAction">
+		<property name="us" ref="us"></property>
+	</bean>
+	<!-- 客户信息表 -->
+	<bean id="cca" class="com.hr.action.CustomerAction">
+	    <property name="ccs" ref="ccs"></property>
+	</bean>
+	<!-- 联系人表 -->
+	<bean id="lka" class="com.hr.action.LinkmanAction">
+	<property name="ils" ref="ils"></property>
+	</bean>
+    <!-- 交易记录表 -->
+	<bean id="aa" class="com.hr.action.ActivityAction">
+	<property name="ia" ref="ia"></property>
+	</bean>
+	<!-- 订单表 -->
+	<bean id="oa" class="com.hr.action.OrdersAction">
+	<property name="ifo" ref="ifo"></property>
+	</bean>
+    <!-- 流失表 -->
+    <bean id="cas" class="com.hr.action.LostAction">
+    <property name="cs" ref="cs"></property>
+    </bean>
+
+</beans>
